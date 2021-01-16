@@ -1,0 +1,4 @@
+def delete_starting_evens(lst):
+  for num in lst :
+    if (num%2 != 0):
+        lst.append(num)
