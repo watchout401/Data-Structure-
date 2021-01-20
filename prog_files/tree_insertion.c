@@ -8,18 +8,14 @@ struct node {
 };struct node *root=NULL;
 
 void insert(int data) {
-   struct node *tempNode = (struct node*) malloc(sizeof(struct node));
    struct node *current;
    struct node *parent;
-
-   tempNode->data = data;
-   tempNode->leftChild = NULL;
-   tempNode->rightChild = NULL;
 
    //if tree is empty, create root node
    if(root == NULL) 
    {
-      root = tempNode;
+      root = (struct node*) malloc(sizeof(struct node));
+      root->data = data;
    } 
    else 
    {
@@ -38,7 +34,8 @@ void insert(int data) {
             //insert to the left
             if(current == NULL) 
             {
-               parent->leftChild = tempNode;
+               parent->leftChild = (struct node*) malloc(sizeof(struct node));
+               parent->leftChild->data = data;
                return;
             }
          }
@@ -51,7 +48,8 @@ void insert(int data) {
             //insert to the right
             if(current == NULL) 
             {
-               parent->rightChild = tempNode;
+               parent->rightChild = (struct node*) malloc(sizeof(struct node));
+               parent->rightChild->data = data;
                return;
             }
          }
