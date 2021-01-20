@@ -1,62 +1,71 @@
 //Stack using array all operations 
 #include<stdio.h>
 #include<stdlib.h>
-#define SIZE 10
 
-void push(int);
+void push(int, int);
 void pop();
 void display();
+int top = -1;
+int stack[0];
 
-int stack[SIZE], top = -1;
-
-int main()
-{
-   int value, choice;
+int main() {
+   int value, choice, SIZE;
    
-   while(1){
+   printf("\nEnter size of STACK:- ");
+   scanf("%d", &SIZE);
+   int stack_var[SIZE];
+   *stack = *stack_var;
+   
+   while(1) {
       printf("\n\n***** WELCOME TO MENU *****\n");
       printf("\nHow many elements you want to Enter?");
-      printf("1. Push\n2. Pop\n3. Display\n4. Exit");
+      printf("\n1. Push\n2. Pop\n3. Display\n4. Exit");
       printf("\nEnter your choice: ");
-      scanf("%d",&choice);
-      switch(choice){
+      scanf("%d", &choice);
+      switch (choice) {
+
 	 case 1: printf("Enter the value to be insert: ");
-		 scanf("%d",&value);
-		 push(value);
-		 break;
+		       scanf("%d", &value);
+		       push(SIZE, value);
+		       break;
+
 	 case 2: pop();
-		 break;
+		       break;
+
 	 case 3: display();
-		 break;
+		       break;
+
 	 case 4: exit(0);
+
 	 default: printf("\nWrong selection!!! Try again!!!");
       }
    }
 }
-void push(int value){
-   if(top == SIZE-1)
+void push(int SIZE, int value){
+   if (top == SIZE-1)
       printf("\nStack is Full!!! Insertion is not possible!!!");
-   else{
+
+   else {
       top++;
       stack[top] = value;
       printf("\nInsertion success!!!");
    }
 }
-void pop(){
-   if(top == -1)
+void pop() {
+   if (top == -1)
       printf("\nStack is Empty!!! Deletion is not possible!!!");
-   else{
+   else {
       printf("\nDeleted : %d", stack[top]);
       top--;
    }
 }
 void display(){
-   if(top == -1)
+   if (top == -1)
       printf("\nStack is Empty!!!");
-   else{
+   else {
       int i;
       printf("\nStack elements are:\n");
-      for(i=top; i>=0; i--)
-	 printf("%d\n",stack[i]);
+      for (i = top; i >= 0; i--)
+	 printf("%d\n", stack[i]);
    }
 }
